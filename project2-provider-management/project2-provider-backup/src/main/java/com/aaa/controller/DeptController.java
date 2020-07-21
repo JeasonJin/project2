@@ -85,6 +85,7 @@ public class DeptController extends CommonController<Dept> {
      * @Param [dept]
      * @return com.aaa.base.ResultData
      **/
+    @PostMapping("/updateDept")
     public ResultData updateDept(@RequestBody Dept dept) {
         System.out.println(dept);
         Map<String, Object> updateResult = deptService.updateDept(dept);
