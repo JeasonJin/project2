@@ -181,13 +181,13 @@ public interface IProjectService {
     /**
      * @Author yao
      * TODO aaa
-     * @Description ////测绘项目管理，项目名称模糊查询，类型 ，日期精确查寻
+     * @Description ////测绘项目管理，项目名称模糊查询，类型 ，日期精确查询
      * @Date 2020/7/17
      * @Param
      * @return
      **/
     @PostMapping("/projectSelect")
-    ResultData<MappingProject> projectSelect(@RequestParam("mappingProject") MappingProject mappingProject);
+    ResultData<MappingProject> projectSelect(@RequestBody MappingProject mappingProject);
     /**
      * @Author yao
      * @Description //通过字段查询所有项目的类型和开工日期、分组
@@ -196,7 +196,7 @@ public interface IProjectService {
      * @return
      **/
     @PostMapping("/selectName")
-    ResultData<MappingProject> selectName(@RequestParam("mappingProject") MappingProject mappingProject);
+    ResultData<MappingProject> selectName(@RequestParam("name") MappingProject mappingProject);
     /**
      * @Author yao
      * @Description //通过id查询项目
@@ -205,7 +205,7 @@ public interface IProjectService {
      * @return
      **/
     @PostMapping("/projectDetail")
-    ResultData<MappingProject> projectDetail(@RequestParam("mappingProject") MappingProject mappingProject);
+    ResultData<MappingProject> projectDetail(@RequestParam("id") MappingProject mappingProject);
     /**
      * @Author yao
      * @Description 通过id修改项目
@@ -217,13 +217,22 @@ public interface IProjectService {
     Integer updateById(@RequestBody MappingProject manProject);
     /**
      * @Author yao
+     * @Description 项目添加
+     * @Date 2020/7/21
+     * @Param
+     * @return
+     **/
+    @PostMapping("/addProject")
+    ResultData<MappingProject>addProject(@RequestBody MappingProject mappingProject);
+    /**
+     * @Author yao
      * @Description 查询所有测绘成果
      * @Date 2020/7/18
      * @Param
      * @return
      **/
     @PostMapping("/selectAllResultCommit")
-    ResultData selectAllResultCommit(@RequestParam("hashMap") HashMap hashMap);
+    ResultData selectAllResultCommit(@RequestBody  HashMap hashMap);
     /**
      * @Author yao
      * @Description 查询所有测绘类型

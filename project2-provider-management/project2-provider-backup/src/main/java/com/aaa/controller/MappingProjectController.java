@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-import static com.aaa.status.SelectStatus.SELECT_DATA_BY_ID_SUCCESS;
-import static com.aaa.status.SelectStatus.SELECT_DATA_SUCCESS;
+import static com.aaa.status.AddStatus.ADD_DATA_SUCCESS;
+import static com.aaa.status.SelectStatus.*;
+
 
 /**
  * Package: com.aaa.controller
@@ -30,7 +31,7 @@ public class MappingProjectController extends CommonController<MappingUnit> {
     @Autowired
     private MappingProjectService mappingProjectService;
 
-    //测绘项目管理，项目名称模糊查询，类型 ，日期精确查
+    //测绘项目管理，项目名称模糊查询，类型 ，日期精确查询
     @PostMapping("/projectSelect")
     public ResultData projectSelect(@RequestBody MappingProject mappingProject) {
         Map<String, Object> resultMap = mappingProjectService.projectSelect(mappingProject);
@@ -60,6 +61,39 @@ public class MappingProjectController extends CommonController<MappingUnit> {
             return  super.selectSuccess(resultMap);
         }else{
             return  super.selectFailed();
+        }
+    }
+    /**
+     * @Author yao
+     * @Description 通过id修改项目
+     * @Date 2020/7/19
+     * @Param
+     * @return
+     **/
+    @PostMapping("/updateById")
+    public  Integer updateById(@RequestBody MappingProject mappingProject){
+        try{
+            Integer integer = mappingProjectService.updateById(mappingProject);
+            return  integer;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return  null;
+    }
+    /**
+     * @Author yao
+     * @Description 项目添加
+     * @Date 2020/7/21
+     * @Param
+     * @return
+     **/
+    @PostMapping("/addProject")
+    ResultData addProject(@RequestBody MappingProject mappingProject){
+        Map<String,Object>addResult = mappingProjectService.addProject(mappingProject);
+        if (ADD_DATA_SUCCESS.getCode().equals(addResult.get("code"))) {
+            return  super.operationSuccess();
+        }else {
+            return  super.operationFailed();
         }
     }
 

@@ -1,16 +1,21 @@
 package com.aaa.service;
 
 
+import cn.hutool.core.date.DateUtil;
 import com.aaa.mapper.MappingProjectMapper;
 import com.aaa.model.MappingProject;
+import com.aaa.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.unit.DataUnit;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.aaa.status.AddStatus.ADD_DATA_FAILED;
+import static com.aaa.status.AddStatus.ADD_DATA_SUCCESS;
 import static com.aaa.status.SelectStatus.*;
 
 /**
@@ -109,6 +114,26 @@ private MappingProjectMapper mappingProjectMapper;
             e.printStackTrace();
         }
         return null;
+    }
+    /**
+     * @Author yao
+     * @Description 新增项目
+     * @Date 2020/7/21
+     * @Param
+     * @return
+     **/
+    public Map<String,Object>addProject(MappingProject mappingProject){
+        Map<String,Object>resultMap = new HashMap<String, Object>();
+        mappingProject.setCreateTime(DateUtil.now());
+        int addResult = mappingProjectMapper.insert(mappingProject);
+        if (addResult > 0) {
+            resultMap.put("code",ADD_DATA_SUCCESS.getCode());
+            resultMap.put("msg",ADD_DATA_SUCCESS.getMsg());
+        }else{
+            resultMap.put("code",ADD_DATA_FAILED.getCode());
+            resultMap.put("msg",ADD_DATA_FAILED.getMsg());
+        }
+        return  resultMap;
     }
 
 }
