@@ -16,6 +16,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @MapperScan("com.aaa.mapper")
 public class ApplicationRun {
     public static void main(String[] args) {
+
         SpringApplication.run(ApplicationRun.class,args);
     }
 }

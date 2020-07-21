@@ -1,5 +1,6 @@
 package com.aaa.service;
 
+import cn.hutool.core.date.DateUtil;
 import com.aaa.base.BaseService;
 import com.aaa.mapper.AuditMapper;
 import com.aaa.mapper.MappingUnitMapper;
@@ -13,7 +14,6 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +46,7 @@ public class UnitService extends BaseService<MappingUnit> {
  *@throws:
  **/
 public Map<String, Object> selectUnit(UnitVo unitVo){
-    Map<String,Object> resultMap = new HashMap<String, Object>();
+    Map<String,Object> resultMap = new HashMap<>();
     try {
         PageInfo<MappingUnit> mappingUnitPageInfo = super.selectListByPage(
                 unitVo.getMappingUnit(), unitVo.getPageNo(), unitVo.getPageSize());
@@ -135,8 +135,7 @@ public Map<String, Object> selectUnit(UnitVo unitVo){
        //生成一个id，用于分值id
        Long id = FileNameUtils.getFileNameLong();
        Long unitId = score.getUnitId();
-       Date date = new Date();
-       unit.setModifyTime(date);
+       unit.setModifyTime(DateUtil.now());
        unit.setScore(score1);
        unit.setId(unitId);
        score.setId(id);
@@ -220,10 +219,9 @@ public Map<String, Object> selectUnit(UnitVo unitVo){
        //获取审核单位id
        Long refId = audit.getRefId();
        MappingUnit unit = new MappingUnit();
-       Date date = new Date();
        unit.setId(refId);
        unit.setUnitStatus(status);
-       unit.setModifyTime(date);
+       unit.setModifyTime(DateUtil.now());
        //修改单位的审核状态
        int res = mappingUnitMapper.updateByPrimaryKeySelective(unit);
        if (res >0) {

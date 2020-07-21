@@ -4,7 +4,6 @@ import com.aaa.model.Technicist;
 import com.aaa.service.TechnicistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,9 +38,12 @@ public class TechnicistController {
        }
        return null;
    }
-
-   @PostMapping("/updateTechnicist")
-    public Boolean updateTechnicist(@RequestBody Technicist technicist){
-       return technicistService.updateTechnicist(technicist);
-   }
+/**
+ *@author: Cancer:栗仁杰
+ *@description:修改技术人员信息
+ *@param: []
+ *@date: 22:29 2020/7/17
+ *@return:
+ *@throws:
+ **/
 }

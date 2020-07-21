@@ -22,6 +22,7 @@ import static com.aaa.status.SelectStatus.SELECT_DATA_SUCCESS;
  * Date: Created in 2020/7/18 10:28
  * Copyright: Copyright (c) 2017
  * Version: 0.0.1
+ * @author Administrator
  */
 @RestController
 public class ResultCommitController extends CommonController {

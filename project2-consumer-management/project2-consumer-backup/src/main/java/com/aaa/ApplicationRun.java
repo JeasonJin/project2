@@ -19,6 +19,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 @RibbonClient(name = "project2-interface-provider")
 public class ApplicationRun {
     public static void main(String[] args) {
+
         SpringApplication.run(ApplicationRun.class,args);
     }
 }

@@ -58,7 +58,7 @@ public class UploadService {
      * @Param: [file, filePath, newFileName]
      * @return: java.lang.Boolean
      */
-    public Boolean uploadFile(MultipartFile file,String filePath,String newFileName){
+    public Boolean upload(MultipartFile file,String filePath,String newFileName){
         try {
             return FtpUtils.uploadFile(ftpProperties.getHost(), ftpProperties.getPort(), ftpProperties.getUsername(), ftpProperties.getPassword(), filePath, ftpProperties.getBasePath(), newFileName, file.getInputStream());
         } catch (IOException e) {

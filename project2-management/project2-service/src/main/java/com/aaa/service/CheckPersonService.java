@@ -4,14 +4,21 @@ import cn.hutool.core.date.DateUtil;
 import com.aaa.mapper.CheckPersonMapper;
 import com.aaa.model.CheckPerson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.util.Sqls;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static com.aaa.status.AddStatus.ADD_DATA_FAILED;
 import static com.aaa.status.AddStatus.ADD_DATA_SUCCESS;
+import static com.aaa.status.DeleteStatus.DELETE_DATA_FAILED;
+import static com.aaa.status.DeleteStatus.DELETE_DATA_SUCCESS;
 import static com.aaa.status.SelectStatus.SELECT_DATA_FAILED;
 import static com.aaa.status.SelectStatus.SELECT_DATA_SUCCESS;
 import static com.aaa.status.UpdateStatus.UPDATE_DATA_FAILED;
@@ -100,6 +107,27 @@ public class CheckPersonService {
         }else {
             resultMap.put("code", UPDATE_DATA_FAILED.getCode());
             resultMap.put("msg", UPDATE_DATA_FAILED.getMsg());
+        }
+        return resultMap;
+    }
+    /**
+     *@author: Cancer:栗仁杰
+     *@description:删除
+     *@param: []
+     *@date: 15:12 2020/7/21
+     *@return:
+     *@throws:
+     **/
+    public HashMap<String,Object> delCheckPerson(List<Long> ids){
+        HashMap<String,Object> resultMap = new HashMap<>();
+        Example example = Example.builder(CheckPerson.class).where(Sqls.custom().andIn("id",ids)).build();
+        int i = checkPersonMapper.deleteByExample(example);
+        if (i>0) {
+            resultMap.put("code", DELETE_DATA_SUCCESS.getCode());
+            resultMap.put("msg", DELETE_DATA_SUCCESS.getMsg());
+        }else {
+            resultMap.put("code", DELETE_DATA_FAILED.getCode());
+            resultMap.put("msg", DELETE_DATA_FAILED.getMsg());
         }
         return resultMap;
     }

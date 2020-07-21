@@ -25,6 +25,8 @@ import static com.aaa.status.SelectStatus.SELECT_DATA_SUCCESS;
 public class UnitController extends BaseController {
     @Autowired
     private UnitService unitService;
+    private UnitVo unitVo;
+
     /**
      *@author: Cancer:栗仁杰
      *@description:
@@ -45,6 +47,23 @@ public class UnitController extends BaseController {
     }
     /**
      *@author: Cancer:栗仁杰
+     *@description:查询单位修改待审核信息
+     *@param: []
+     *@date: 11:30 2020/7/18
+     *@return:
+     *@throws:
+     **/
+    @PostMapping("/selectUpdateUnit")
+    ResultData selectUpdateUnit(){
+        Map<String, Object> stringObjectMap = unitService.selectUpdateUnit(unitVo);
+        if (SELECT_DATA_SUCCESS.getCode().equals(stringObjectMap.get("code"))){
+            return super.selectSuccess(stringObjectMap.get("data"));
+        }else{
+            return super.selectFailed();
+        }
+    }
+    /**
+     *@author: Cancer:栗仁杰
      *@description:
      *          查询单位注册待审核信息
      *@param: []
@@ -52,9 +71,9 @@ public class UnitController extends BaseController {
      *@return:
      *@throws:
      **/
-    @PostMapping("/selectUpdateUnit")
-    ResultData selectUpdateUnit(@RequestBody UnitVo unitVo){
-        Map<String, Object> stringObjectMap = unitService.selectUpdateUnit(unitVo);
+    @PostMapping("/selectRegistrationUnit")
+    ResultData selectRegistrationUnit(@RequestBody UnitVo unitVo){
+        Map<String, Object> stringObjectMap = unitService.selectRegistrationUnit(unitVo);
         if (SELECT_DATA_SUCCESS.getCode().equals(stringObjectMap.get("code"))){
             return super.selectSuccess(stringObjectMap.get("date"));
         }else{

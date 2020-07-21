@@ -22,11 +22,12 @@
     <result column="modify_time" property="modifyTime" jdbcType="DATE" />
   </resultMap>
 
-  <select id="queryOne" parameterType="Principal" resultType="com.aaa.model.Principal">
+  <select id="queryOne" parameterType="java.lang.String" resultType="com.aaa.model.Principal">
     select id,type,name,id_number,sex,age,major,title from t_principal where user_id =#{userId}
   </select>
+    <select id="selectPrincipalById" resultType="com.aaa.model.Principal"></select>
 
-  <update id="updateList" parameterType="Principal">
+    <update id="updateList" parameterType="java.lang.String">
     update t_principal
     set id = #{id,jdbcType=BIGINT},
     type = #{type,jdbcType=VARCHAR},

@@ -90,4 +90,5 @@
     </where>
     ORDER BY id ASC
   </select>
+    <select id="selectAllPros" resultType="com.aaa.model.MappingProject"></select>
 </mapper>

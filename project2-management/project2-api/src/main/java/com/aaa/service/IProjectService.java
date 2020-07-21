@@ -7,6 +7,7 @@ import feign.Response;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.acl.LastOwnerException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -341,4 +342,44 @@ public interface IProjectService {
      **/
     @PostMapping("/updateRole")
     ResultData updateRole(@RequestBody RoleVo roleVo);
+    /**
+     *@author: Cancer:栗仁杰
+     *@description:查询抽查人员
+     *@param: []
+     *@date: 16:41 2020/7/21
+     *@return:
+     *@throws:
+     **/
+    @PostMapping("/checkPerson/selectAllCheckPerson")
+    ResultData selectAllCheckPerson(@RequestBody HashMap map);
+    /**
+     *@author: Cancer:栗仁杰
+     *@description:添加抽查人员
+     *@param: []
+     *@date: 16:50 2020/7/21
+     *@return:
+     *@throws:
+     **/
+    @PostMapping("checkPerson/addCheckPerson")
+    ResultData addCheckPerson(@RequestBody CheckPerson checkPerson);
+    /**
+     *@author: Cancer:栗仁杰
+     *@description:修改抽查人员信息
+     *@param: []
+     *@date: 16:56 2020/7/21
+     *@return:
+     *@throws:
+     **/
+    @PostMapping("checkPerson/updateCheckPerson")
+    ResultData updateCheckPerson(@RequestBody CheckPerson checkPerson);
+    /**
+     *@author: Cancer:栗仁杰
+     *@description:删除抽查人员
+     *@param: []
+     *@date: 17:02 2020/7/21
+     *@return:
+     *@throws:
+     **/
+    @DeleteMapping("/checkPerson/delCheckPerson")
+    ResultData delCheckPerson(@RequestBody List<Long> ids);
 }

@@ -14,4 +14,13 @@ import java.util.List;
 public interface PrincipalMapper extends Mapper<Principal> {
     List<Principal> queryOne(Long id);
     int updateList(Principal principal);
+    /**
+     *@author: Cancer:栗仁杰
+     *@description: 查询单个负责人的信息
+     *@param: []
+     *@date: 9:05 2020/7/18
+     *@return:
+     *@throws:
+     **/
+    Principal selectPrincipalById(String id);
 }

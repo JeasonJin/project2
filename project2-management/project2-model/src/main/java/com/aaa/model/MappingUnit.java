@@ -29,7 +29,7 @@ public class MappingUnit {
      * 修改时间
      */
     @Column(name = "modify_time")
-    private Date modifyTime;
+    private String modifyTime;
 
     /**
      * 备注
