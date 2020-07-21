@@ -9,6 +9,7 @@ import com.aaa.model.RoleMenu;
 import com.aaa.vo.RoleVo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,6 +26,7 @@ import static com.aaa.status.SelectStatus.SELECT_DATA_SUCCESS;
  * @Author jyz
  * @date 2020/7/18 9:25
  **/
+@Service
 public class RoleService extends BaseService<Role> {
     @Autowired
     private RoleMapper roleMapper;

@@ -207,6 +207,15 @@ public interface IProjectService {
     ResultData<MappingProject> projectDetail(@RequestParam MappingProject mappingProject);
     /**
      * @Author yao
+     * @Description 通过id修改项目
+     * @Date 2020/7/19
+     * @Param
+     * @return
+     **/
+    @PostMapping("/project/updateById")
+    Integer updateById(@RequestBody MappingProject manProject);
+    /**
+     * @Author yao
      * @Description 查询所有测绘成果
      * @Date 2020/7/18
      * @Param

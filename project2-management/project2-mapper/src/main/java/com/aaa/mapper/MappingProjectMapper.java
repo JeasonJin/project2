@@ -7,7 +7,7 @@ import tk.mybatis.mapper.common.Mapper;
 import java.util.HashMap;
 import java.util.List;
 
-public interface MappingProjectMapper extends  Mapper<MappingProjectMapper> {
+public interface MappingProjectMapper extends  Mapper<MappingProject> {
     //查询所有项目
     List<HashMap>selectAllProject();
 

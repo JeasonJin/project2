@@ -78,5 +78,37 @@ private MappingProjectMapper mappingProjectMapper;
         resultMap.put("msg",SELECT_DATA_BY_ID_FAILED.getMsg());
         return resultMap;
     }
+    /**
+     * @Author yao
+     * @Description 通过id修改项目
+     * @Date 2020/7/19
+     * @Param
+     * @return
+     **/
+    public Integer updateById(MappingProject mappingProject){
+        System.out.println(mappingProject);
+        int i = 0;
+        try {
+            if (!"".equals(mappingProject)){
+                //执行修改的方法 返回受影响的行数
+                i = mappingProjectMapper.updateByPrimaryKeySelective(mappingProject);
+                //判断受影响的行数
+                if (i>0){
+                    return i;
+                }else {
+                    //再次执行修改操作
+                    int j = mappingProjectMapper.updateByPrimaryKeySelective(mappingProject);
+                    if (j>0){
+                        return j;
+                    }
+                }
+            }else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }

@@ -7,6 +7,7 @@ import com.aaa.service.IProjectService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -56,6 +57,22 @@ public class MappingProjectController  extends BaseController {
     public ResultData projectDetail(@RequestParam MappingProject mappingProject){
         return  iProjectService.projectDetail(mappingProject);
     }
+    /**2
+     * @Author yao
+     * @Description 通过id修改项目
+     * @Date 2020/7/19
+     * @Param
+     * @return
+     **/
+    @PostMapping("/updateById")
+    public ResultData updateById(@RequestBody MappingProject mappingProject){
+        Integer i = iProjectService.updateById(mappingProject);
+        if (null != i && i > 0){
+            return super.updateSuccess();
+        }
+        return super.updateFailed();
+    }
+
 
 
 

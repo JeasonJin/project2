@@ -4,6 +4,7 @@ import cn.hutool.core.date.DateUtil;
 import com.aaa.mapper.CheckPersonMapper;
 import com.aaa.model.CheckPerson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +24,7 @@ import static com.aaa.status.UpdateStatus.UPDATE_DATA_SUCCESS;
  * @Description:
  *            用于用户的增删改
  */
+@Service
 public class CheckPersonService {
 
 

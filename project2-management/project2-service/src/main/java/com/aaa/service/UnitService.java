@@ -11,6 +11,7 @@ import com.aaa.utils.FileNameUtils;
 import com.aaa.vo.UnitVo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -27,6 +28,7 @@ import static com.aaa.status.SelectStatus.SELECT_DATA_SUCCESS;
  * @Description:
  *         单位审核
  */
+@Service
 public class UnitService extends BaseService<MappingUnit> {
     @Autowired
     MappingUnitMapper mappingUnitMapper;
