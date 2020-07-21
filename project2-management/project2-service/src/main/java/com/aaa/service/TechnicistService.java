@@ -79,7 +79,7 @@ public class TechnicistService extends BaseService<Technicist> {
                 int r = resourceMapper.insert(resource);
                 if (r >0) {
                     //添加成功后上传文件
-                    result = uploadService.upload(file, filePath, newFileName);
+                    result = uploadService.upload(file);
                 }
             }
             if (result){
