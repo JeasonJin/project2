@@ -177,7 +177,7 @@ public interface IProjectService {
      * @return com.aaa.base.ResultData<com.aaa.model.Menu>
      **/
     @PostMapping("/deleteMenusOrButton")
-    ResultData<Menu> deleteMenusOrButton(@RequestBody Long menuId);
+    ResultData<Menu> deleteMenusOrButton(@RequestParam("menuId") Long menuId);
     /**
      * @Author yao
      * @Description ////测绘项目管理，项目名称模糊查询，类型 ，日期精确查寻
