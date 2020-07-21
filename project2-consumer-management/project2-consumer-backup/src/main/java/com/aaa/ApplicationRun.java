@@ -3,7 +3,9 @@ package com.aaa;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.openfeign.FeignClient;
 
 /**
  * @ClassName ApplicationRun
@@ -14,6 +16,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = {"com.aaa"})
+@RibbonClient(name = "project2-interface-provider")
 public class ApplicationRun {
     public static void main(String[] args) {
         SpringApplication.run(ApplicationRun.class,args);

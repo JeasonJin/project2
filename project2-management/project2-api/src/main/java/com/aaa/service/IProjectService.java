@@ -16,7 +16,7 @@ import java.util.List;
  * @Author jyz
  * @date 2020/7/15 15:02
  **/
-@FeignClient(value = "")
+@FeignClient(value = "project2-interface-provider")
 public interface IProjectService {
 
     /**
@@ -177,7 +177,7 @@ public interface IProjectService {
      * @return com.aaa.base.ResultData<com.aaa.model.Menu>
      **/
     @PostMapping("/deleteMenusOrButton")
-    ResultData<Menu> deleteMenusOrButton(@RequestParam Long menuId);
+    ResultData<Menu> deleteMenusOrButton(@RequestBody Long menuId);
     /**
      * @Author yao
      * @Description ////测绘项目管理，项目名称模糊查询，类型 ，日期精确查寻
@@ -186,7 +186,7 @@ public interface IProjectService {
      * @return
      **/
     @PostMapping("/projectSelect")
-    ResultData<MappingProject> projectSelect(@RequestParam MappingProject mappingProject);
+    ResultData<MappingProject> projectSelect(@RequestParam("mappingProject") MappingProject mappingProject);
     /**
      * @Author yao
      * @Description //通过字段查询所有项目的类型和开工日期、分组
@@ -195,7 +195,7 @@ public interface IProjectService {
      * @return
      **/
     @PostMapping("/selectName")
-    ResultData<MappingProject> selectName(@RequestParam MappingProject mappingProject);
+    ResultData<MappingProject> selectName(@RequestParam("mappingProject") MappingProject mappingProject);
     /**
      * @Author yao
      * @Description //通过id查询项目
@@ -204,7 +204,7 @@ public interface IProjectService {
      * @return
      **/
     @PostMapping("/projectDetail")
-    ResultData<MappingProject> projectDetail(@RequestParam MappingProject mappingProject);
+    ResultData<MappingProject> projectDetail(@RequestParam("mappingProject") MappingProject mappingProject);
     /**
      * @Author yao
      * @Description 通过id修改项目
@@ -222,7 +222,7 @@ public interface IProjectService {
      * @return
      **/
     @PostMapping("/selectAllResultCommit")
-    ResultData selectAllResultCommit(@RequestParam HashMap hashMap);
+    ResultData selectAllResultCommit(@RequestParam("hashMap") HashMap hashMap);
     /**
      * @Author yao
      * @Description 查询所有测绘类型
