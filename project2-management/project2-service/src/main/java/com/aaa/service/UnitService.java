@@ -46,7 +46,7 @@ public class UnitService extends BaseService<MappingUnit> {
  *@throws:
  **/
 public Map<String, Object> selectUnit(UnitVo unitVo){
-    Map<String,Object> resultMap = new HashMap<>();
+    Map<String,Object> resultMap = new HashMap<String,Object>();
     try {
         PageInfo<MappingUnit> mappingUnitPageInfo = super.selectListByPage(
                 unitVo.getMappingUnit(), unitVo.getPageNo(), unitVo.getPageSize());

@@ -119,7 +119,7 @@ public class CheckPersonService {
      *@throws:
      **/
     public HashMap<String,Object> delCheckPerson(List<Long> ids){
-        HashMap<String,Object> resultMap = new HashMap<>();
+        HashMap<String,Object> resultMap = new HashMap<String, Object>();
         Example example = Example.builder(CheckPerson.class).where(Sqls.custom().andIn("id",ids)).build();
         int i = checkPersonMapper.deleteByExample(example);
         if (i>0) {

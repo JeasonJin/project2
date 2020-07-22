@@ -123,7 +123,7 @@ public class TechnicistService extends BaseService<Technicist> {
      **/
 
     public Map<String, Object> selectTechnicistById(String id) {
-        Map<String,Object> resultMap = new HashMap<>();
+        Map<String,Object> resultMap = new HashMap<String, Object>();
         Technicist technicist = technicistMapper.selectByPrimaryKey(id);
         if (technicist != null && !"".equals(technicist)){
             resultMap.put("code",SELECT_DATA_SUCCESS.getCode());

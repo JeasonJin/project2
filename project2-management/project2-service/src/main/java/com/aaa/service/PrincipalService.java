@@ -66,7 +66,7 @@ public class PrincipalService extends BaseService<Principal> {
      **/
 
     public Map<String,Object> selectPrincipalById(String id){
-        Map<String,Object> resultMap = new HashMap<>();
+        Map<String,Object> resultMap = new HashMap<String, Object>();
         Principal principal = principalMapper.selectPrincipalById(id);
         if (principal != null && !"".equals(principal)){
             resultMap.put("code",SELECT_DATA_SUCCESS.getCode());
@@ -88,7 +88,7 @@ public class PrincipalService extends BaseService<Principal> {
      **/
 
     public Map<String, Object> addPrincipal(Principal principal, MultipartFile[] files, UploadService uploadService){
-        Map<String, Object> resultMap = new HashMap<>();
+        Map<String, Object> resultMap = new HashMap<String, Object>();
         //设置负责人创建时间
         principal.setCreateTime(DateUtil.now());
         //生成一个id，用于负责人id
