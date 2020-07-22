@@ -6,6 +6,7 @@ import com.aaa.vo.RoleVo;
 import feign.Response;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.security.acl.LastOwnerException;
 import java.util.HashMap;
@@ -382,4 +383,14 @@ public interface IProjectService {
      **/
     @DeleteMapping("/checkPerson/delCheckPerson")
     ResultData delCheckPerson(@RequestBody List<Long> ids);
+
+    /**
+     * @Author jyz
+     * @Description //TODO 文件上传
+     * @Date 19:35 2020/7/22
+     * @Param [file]
+     * @return java.lang.Boolean
+     **/
+    @PostMapping("/upload")
+    Boolean upload(@RequestParam("file") MultipartFile file);
 }
