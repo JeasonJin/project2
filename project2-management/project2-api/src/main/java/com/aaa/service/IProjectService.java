@@ -28,8 +28,8 @@ public interface IProjectService {
      * @Param [user]
      * @return com.aaa.base.ResultData
      **/
-    @PostMapping("/doLogin")
-    ResultData doLogin(@RequestBody User user);
+    @RequestMapping("/doLogin")
+    ResultData doLogin(User user);
 
     /**
      * @Author jyz

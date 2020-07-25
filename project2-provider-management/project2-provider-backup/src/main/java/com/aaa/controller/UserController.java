@@ -51,7 +51,7 @@ public class UserController extends CommonController<User> {
      * @return java.lang.Integer
      **/
     @PostMapping("/addUser")
-    public ResultData insert(@RequestBody User user) {
+    public ResultData insert(User user) {
         TokenVo tokenVo = userService.insert(user);
         if (tokenVo.getIfSuccess()){
             return super.operationSuccess(tokenVo.getToken());
@@ -120,8 +120,8 @@ public class UserController extends CommonController<User> {
      * @Param [map]
      * @return com.aaa.base.ResultData
      **/
-    @PostMapping("/selectUserAll")
-    public ResultData selectUserAll(@RequestBody HashMap map){
+    @GetMapping("/selectUserAll")
+    public ResultData selectUserAll( HashMap map){
         Map<String, Object> userAll = userService.selectUserAll(map,redisService);
         if (SUCCESS.getCode().equals(userAll.get("code"))){
             return super.operationSuccess(userAll);
@@ -138,7 +138,7 @@ public class UserController extends CommonController<User> {
      * @Param [user, pageNo, pageSize]
      * @return com.github.pagehelper.PageInfo<com.aaa.model.User>
      **/
-    @PostMapping("/selectUser")
+    @GetMapping("/selectUser")
     public PageInfo<User> selectUser(@RequestBody User user, @RequestParam("pageNo") Integer pageNo, @RequestParam("pageNo") Integer pageSize){
         return getBaseService().selectListByPage(user,pageNo,pageSize);
     }

@@ -1,9 +1,8 @@
 package com.aaa.controller;
 
-import com.aaa.service.UploadService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @ClassName TurnPageController
@@ -13,8 +12,23 @@ import org.springframework.web.bind.annotation.PostMapping;
  **/
 @Controller
 public class TurnPageController {
-    @PostMapping("/index")
+    @GetMapping("/")
+    public String toLogin(){
+        return "login";
+    }
+
+    @GetMapping("/toIndexPage")
     public String getIndex(){
         return "index";
+    }
+
+    @GetMapping("/admin")
+    public String toAdmin(){
+        return "admin";
+    }
+
+    @GetMapping("/toMainPage")
+    public String toMainPage(){
+        return "main";
     }
 }

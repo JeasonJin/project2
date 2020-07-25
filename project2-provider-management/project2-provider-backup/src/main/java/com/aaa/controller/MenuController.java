@@ -32,7 +32,7 @@ public class MenuController extends CommonController<Menu> {
      * @Param []
      * @return java.util.List<com.aaa.model.Menu>
      **/
-    @GetMapping("/selectMenus")
+    @PostMapping("/selectMenus")
     public List<Menu> selectAllMenus(){
         return menuService.selectAllMenus();
     }

@@ -8,9 +8,7 @@ import com.aaa.service.LoginService;
 import com.aaa.status.LoginStatus;
 import com.aaa.vo.TokenVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static com.aaa.status.LoginStatus.PASSWORD_WRONG;
 import static com.aaa.status.LoginStatus.USER_NOT_EXIST;
@@ -39,8 +37,8 @@ public class LoginController extends CommonController<User> {
      * @Param [user]
      * @return com.aaa.base.ResultData
      **/
-    @PostMapping("/doLogin")
-    public ResultData doLogin(@RequestBody User user) {
+    @RequestMapping("/doLogin")
+    public ResultData doLogin(User user) {
         TokenVo tokenVo = loginService.doLogin(user);
         if(tokenVo.getIfSuccess()) {
             return super.loginSuccess(tokenVo.getToken());

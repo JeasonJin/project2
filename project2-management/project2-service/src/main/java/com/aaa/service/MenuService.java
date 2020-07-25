@@ -6,9 +6,7 @@ import com.aaa.model.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @ClassName MenuService
@@ -28,8 +26,10 @@ public class MenuService extends BaseService<Menu> {
      * @return java.util.List<com.aaa.model.Menu>
      **/
     public List<Menu> selectAllMenus(){
+        Map map = new HashMap();
         //菜单树
         List<Menu> menuList = new ArrayList<Menu>();
+        map.put("menuName",menuList);
         //菜单全部信息
         List<Menu> allMenusList = menuMapper.selectAll();
         if (null != allMenusList || allMenusList.size()>0){

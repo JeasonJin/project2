@@ -7,6 +7,7 @@ import com.aaa.model.User;
 import com.aaa.service.IProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoginController extends BaseController {
     @Autowired
-    private IProjectService projectService;
+    private IProjectService iProjectService;
     /**
      * @Author jyz
      * @Description //TODO 执行登录操作
@@ -26,9 +27,9 @@ public class LoginController extends BaseController {
      * @Param [user]
      * @return com.aaa.base.ResultData
      **/
-    @PostMapping("/doLogin")
+    @RequestMapping("/doLogin")
     @LoginAnnotation(opeationType = "登录操作" , opeationName = "管理员登录")
     public ResultData doLogin(User user){
-        return projectService.doLogin(user);
+        return iProjectService.doLogin(user);
     }
 }

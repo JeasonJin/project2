@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+    <script type="text/javascript" src="static/js/jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#do_upload").click(function () {
+                $.ajax({
+                    url : "/uploadFile",
+                    data : new FormData($("#forms")[0]),
+                    type : "post",
+                    contentType: false,
+                    processData : false,
+                    success : function (data) {
+                        alert(data);
+                    }
+                })
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="forms">
+        File:<input type="file" name="file" /> <br />
+        <input id="do_upload" type="button" value="Submit" />
+    </form>
+</body>
+</html>

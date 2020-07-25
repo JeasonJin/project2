@@ -16,7 +16,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = {"com.aaa"})
-@RibbonClient(name = "project2-interface-provider")
+@RibbonClient(name = "project2-interface-consumer")
 public class ApplicationRun {
     public static void main(String[] args) {
 
