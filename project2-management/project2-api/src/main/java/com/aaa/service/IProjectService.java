@@ -192,7 +192,7 @@ public interface IProjectService {
     ResultData<MappingProject> projectSelect(@RequestBody MappingProject mappingProject);
     /**
      * @Author yao
-     * @Description //通过字段查询所有项目的类型和开工日期、分组
+     * @Description //根据项目类型进行查询
      * @Date 2020/7/17
      * @Param
      * @return
@@ -226,6 +226,15 @@ public interface IProjectService {
      **/
     @PostMapping("/addProject")
     ResultData<MappingProject>addProject(@RequestBody MappingProject mappingProject);
+    /**
+     * @Author yao
+     * @Description 查询所有新闻公告
+     * @Date 2020/7/22
+     * @Param
+     * @return
+     **/
+    @PostMapping("/selectNewsAll")
+    ResultData<News>selectNewsAll(@RequestBody News news);
     /**
      * @Author yao
      * @Description 查询所有测绘成果

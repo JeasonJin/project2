@@ -27,7 +27,7 @@ public class RoleController extends CommonController<Role> {
     private RoleService roleService;
     @Override
     public BaseService<Role> getBaseService() {
-        return null;
+        return roleService;
     }
 
     /**

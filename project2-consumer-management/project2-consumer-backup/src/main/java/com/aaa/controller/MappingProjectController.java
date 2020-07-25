@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
  * Version: 0.0.1
  */
 @RestController
-@RequestMapping("/project")
 @Api(value = "项目管理", tags = "项目管理接口")
 public class MappingProjectController  extends BaseController {
     @Autowired
@@ -35,18 +34,7 @@ public class MappingProjectController  extends BaseController {
     public ResultData projectSelect(@RequestBody MappingProject mappingProject){
         return  iProjectService.projectSelect(mappingProject);
     }
-    /**
-     * @Author yao
-     * @Description //通过字段查询所有项目的类型和开工日期、分组
-     * @Date 2020/7/17
-     * @Param
-     * @return
-     **/
-    @PostMapping("/selectName")
-    @ApiOperation(value = "通过字段查询所有的类型和开工日期",notes = "首页的查询")
-    public ResultData selectName(@RequestParam("name") MappingProject mappingProject){
-        return  iProjectService.selectName(mappingProject);
-    }
+
     /**
      * @Author yao
      * @Description //通过id查询项目

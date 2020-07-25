@@ -6,6 +6,7 @@ import com.aaa.base.ResultData;
 import com.aaa.model.MappingProject;
 import com.aaa.model.MappingUnit;
 import com.aaa.service.MappingProjectService;
+import com.aaa.service.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +31,9 @@ import static com.aaa.status.SelectStatus.*;
 public class MappingProjectController extends CommonController<MappingUnit> {
     @Autowired
     private MappingProjectService mappingProjectService;
+    @Autowired
+    private UploadService uploadService;
+
 
     //测绘项目管理，项目名称模糊查询，类型 ，日期精确查询
     @PostMapping("/projectSelect")
@@ -42,17 +46,7 @@ public class MappingProjectController extends CommonController<MappingUnit> {
         }
     }
 
-    //通过字段查询所有的类型和开工日期、分组
-    @PostMapping("/selectName")
-    public ResultData selectName(@RequestParam("name") String name){
-        System.out.println(name);
-        Map<String,Object> resultMap =  mappingProjectService.selectName(name);
-        if (SELECT_DATA_BY_ID_SUCCESS.getCode().equals(resultMap.get("code"))) {
-            return  super.selectSuccess(resultMap);
-        }else{
-            return  super.selectFailed();
-        }
-    }
+
     //通过id查询项目
     @PostMapping("/projectDetail")
     public ResultData projectDetail(@RequestParam("id") String id){
@@ -88,7 +82,7 @@ public class MappingProjectController extends CommonController<MappingUnit> {
      * @return
      **/
     @PostMapping("/addProject")
-    ResultData addProject(@RequestBody MappingProject mappingProject){
+    public ResultData addProject(@RequestBody MappingProject mappingProject){
         Map<String,Object>addResult = mappingProjectService.addProject(mappingProject);
         if (ADD_DATA_SUCCESS.getCode().equals(addResult.get("code"))) {
             return  super.operationSuccess();
@@ -96,6 +90,7 @@ public class MappingProjectController extends CommonController<MappingUnit> {
             return  super.operationFailed();
         }
     }
+
 
     @Override
     public BaseService<MappingUnit> getBaseService() {

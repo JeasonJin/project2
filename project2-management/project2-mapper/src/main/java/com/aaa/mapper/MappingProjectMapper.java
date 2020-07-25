@@ -16,6 +16,14 @@ public interface MappingProjectMapper extends  Mapper<MappingProject> {
     List<HashMap>selectName(String name);
     //通过ID查询
     List<HashMap> projectDetail(String id);
+    /**
+     * @Author yao
+     * @Description 根据项目类型查询
+     * @Date 2020/7/23
+     * @Param
+     * @return
+     **/
+    List<MappingProject> getInfoByType(String mappingProject);
 
 
     //模糊查询

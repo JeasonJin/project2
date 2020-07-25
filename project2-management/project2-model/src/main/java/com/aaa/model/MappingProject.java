@@ -1,5 +1,6 @@
 package com.aaa.model;
 
+import com.aaa.base.BaseModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @Data
 @Table(name = "t_mapping_project")
 @Accessors(chain = true)
-public class MappingProject {
+public class MappingProject extends BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

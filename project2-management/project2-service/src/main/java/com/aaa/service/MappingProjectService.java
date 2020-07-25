@@ -29,8 +29,10 @@ import static com.aaa.status.SelectStatus.*;
 //项目管理
 @Service
 public class MappingProjectService {
-@Autowired
-private MappingProjectMapper mappingProjectMapper;
+    @Autowired
+    private MappingProjectMapper mappingProjectMapper;
+
+
 
     //测绘项目管理，项目名称模糊查询，类型 ，日期精确查询
     public Map<String,Object> projectSelect(MappingProject mappingProject) {
@@ -52,21 +54,7 @@ private MappingProjectMapper mappingProjectMapper;
         return  resultMap;
     }
 
-    //通过字段查询所有项目
-    public Map<String,Object>selectName(String name){
-        HashMap<String,Object> resultMap = new HashMap<String, Object>();
-        List<HashMap> restdata = new ArrayList<HashMap>();
-        restdata = mappingProjectMapper.selectName(name);
-        if (restdata.size()>0) {
-            resultMap.put("code",SELECT_DATA_SUCCESS.getCode());
-            resultMap.put("msg",SELECT_DATA_SUCCESS.getMsg());
-            resultMap.put("data",restdata);
-        }else {
-            resultMap.put("code",SELECT_DATA_FAILED.getCode());
-            resultMap.put("msg",SELECT_DATA_FAILED.getMsg());
-        }
-        return  resultMap;
-    }
+
     //通过ID查询项目
     public  HashMap<String,Object>projectDetail(String id){
         HashMap<String,Object>resultMap = new HashMap<String, Object>();
@@ -123,6 +111,7 @@ private MappingProjectMapper mappingProjectMapper;
      * @return
      **/
     public Map<String,Object>addProject(MappingProject mappingProject){
+
         Map<String,Object>resultMap = new HashMap<String, Object>();
         mappingProject.setCreateTime(DateUtil.now());
         int addResult = mappingProjectMapper.insert(mappingProject);

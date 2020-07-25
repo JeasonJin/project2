@@ -90,5 +90,7 @@
     </where>
     ORDER BY id ASC
   </select>
-    <select id="selectAllPros" resultType="com.aaa.model.MappingProject"></select>
+  <select id="getInfoByType" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select * from t_mapping_project where results_status=0 and project_type=#{projectType, jdbcType=VARCHAR}
+  </select>
 </mapper>
